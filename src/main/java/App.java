@@ -64,5 +64,19 @@ public class App{
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
 
+          get("/clients/all", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("template", "templates/clients.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+          get("/clients/:id", (request, response) -> {
+            HashMap<String, Object> model = new HashMap<String, Object>();
+            Client client = Client.find(Integer.parseInt(request.params(":id")));
+            model.put("client", client);
+            model.put("template", "templates/clients.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
         }
     }       
