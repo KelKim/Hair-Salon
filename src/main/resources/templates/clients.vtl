@@ -1,0 +1,15 @@
+<h1>List of Clients</h1>
+
+        #if ($clients)
+        <ul>
+        #foreach ($client in $stylist.getClients())
+        <li>
+        $client.getClientFirstName() $client.getClientLastName
+        </li>
+        #end
+        </ul>
+        #else
+        <p>No clients!</p>
+        #end
+
+        <a href="/">View Stylists</a>
