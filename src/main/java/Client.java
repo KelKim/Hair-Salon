@@ -3,34 +3,18 @@ import java.util.List;
 import org.sql2o.*;
 
 public class Client {
-    private String clientFirstName;
-    private String clientLastName;
-    private String clientPhoneNo;
-    private String clientEmail;
-    private int id;
-    private int stylistId;
+    private String clientName;
 
 
-    public Client(String clientFirstName, String clientLastName, String clientPhoneNo, String clientEmail, int stylistId){
-        this.clientFirstName = clientFirstName;
-        this.clientLastName = clientLastName;
-        this.clientPhoneNo = clientPhoneNo;
-        this.clientEmail = clientEmail;
+    public Client(String clientName){
+        this.clientName = clientName;
         this.stylistId = stylistId;
     }
 
-    public String getClientFirstName(){
-        return clientFirstName;
+    public String getClientName(){
+        return clientName;
     }
-    public String getClientLastName(){
-        return clientLastName;
-    }
-    public String getClientPhoneNo(){
-        return clientPhoneNo;
-    }
-    public String getClientEmail(){
-        return clientEmail;
-    }
+    
     public int getId() {
         return id;
     }
@@ -49,7 +33,7 @@ public class Client {
 
     }
     public static List<Client> all() {
-        String sql = "SELECT id, clientFirstName, clientLastName, clientPhoneNo, clientEmail, stylistId FROM clients";
+        String sql = "SELECT id, clientName, stylistId FROM clients";
         try (Connection con = DB.sql2o.open()) {
             return con.createQuery(sql).executeAndFetch(Client.class);
         }
@@ -61,10 +45,7 @@ public class Client {
             return false;
         } else {
             Client newClient = (Client) otherClient;
-            return this.getClientFirstName().equals(newClient.getClientFirstName()) &&
-                    this.getClientLastName().equals(newClient.getClientLastName()) &&
-                    this.getClientPhoneNo().equals(newClient.getClientPhoneNo()) &&
-                    this.getClientEmail().equals(newClient.getClientEmail()) &&
+            return this.getClientName().equals(newClient.getClientName()) &&
                     this.getId() == newClient.getId()  &&
                     this.getStylistId() == newClient.getStylistId();
         }
@@ -72,12 +53,9 @@ public class Client {
 
     public void save() {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO clients (clientFirstName, clientLastName, clientPhoneNo, clientEmail, stylistId) VALUES (:clientFirstName, :clientLastName, :clientPhoneNo, :clientEmail, :stylistId)";
+            String sql = "INSERT INTO clients (clientName, stylistId) VALUES (:clientName, :stylistId)";
             this.id = (int) con.createQuery(sql, true)
-                    .addParameter("clientFirstName", this.clientFirstName)
-                    .addParameter("clientLastName", this.clientLastName)
-                    .addParameter("clientPhoneNo", this.clientPhoneNo)
-                    .addParameter("clientEmail", this.clientEmail)
+                    .addParameter("clientName", this.clientName)
                     .addParameter("stylistId", this.stylistId)
                     .executeUpdate()
                     .getKey();
