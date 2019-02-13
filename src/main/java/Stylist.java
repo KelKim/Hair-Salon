@@ -40,3 +40,4 @@ public class Stylist {
     public int getId(){
         return id;
     }
+}
