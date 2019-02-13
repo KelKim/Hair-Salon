@@ -36,5 +36,24 @@ public class App{
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
 
+          post("/stylists", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String stylistName = request.queryParams("stylistName");
+            Stylist newStylist = new Stylist(stylistName);
+            newStylist.save();
+            response.redirect("/");
+            model.put("template", "templates/stylists.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+          post("/stylists", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            Stylist stylist = Stylist.find(Integer.parseInt(request.queryParams(":id")));
+            stylist.delete();
+            response.redirect("/");
+            model.put("template", "templates/stylists.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
         }
     }       

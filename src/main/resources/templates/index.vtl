@@ -14,27 +14,7 @@
     </form>
 
     </div>
-    <div class="col-md-6">
-
-    #if($stylists)
-
-    <ol>
-      #foreach ($stylist in $stylists)
-        <div class="stylists card">
-        <li><a href="/stylists/$stylist.getId()" class="links">$stylist.getStylistName()</a></li>
-
-        <form action="#" method="">
-            <button type="submit" class="btn btn-danger" id="delete-stylist">Delete Stylist</button>
-            </form>
-            </div>
-        #end
-    </ol>
-    #else
-    <p>NO STYLISTS</p>
-    #end
-    </div>
-
-
-
+    
    </div>
+   
 </div>
