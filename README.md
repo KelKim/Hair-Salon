@@ -25,11 +25,11 @@ Kelvin Kimathi
  * Install Postgres SQL
  * run the following commands in your terminal
 
-        CREATE DATABASE Hair_Salon;
+        CREATE DATABASE hair_salon;
 
-        CREATE TABLE stylists (id serial PRIMARY KEY, firstName varchar, secondName varchar, lastName varchar, phoneNo varchar, idNo varchar, email varchar);
+        CREATE TABLE stylists (id serial PRIMARY KEY, stylistName varchar);
 
-        CREATE TABLE clients (id serial PRIMARY KEY, clientFirstName varchar,  clientLastName varchar, clientPhoneNo varchar, clientIdNo varchar, clientEmail varchar);
+        CREATE TABLE clients (id serial PRIMARY KEY, clientName varchar);
 
         CREATE DATABASE hair_salon_test;
 

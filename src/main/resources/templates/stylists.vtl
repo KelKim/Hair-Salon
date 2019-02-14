@@ -1,4 +1,21 @@
-<div class="col-md-6">
+<div class="container">
+<h1> DreadLock Village Salon </h1>
+<h2>Managament System</h1>
+
+<div class="row row1">
+ <div class="col-md-6">
+   <form class="form" action="/stylists" method="post">
+                        <h3>ADD STYLIST</h3>
+        <div class="form-group">
+            <input id="stylistName" name="stylistName" type="text" placeholder="Stylist Name" required>
+        </div>
+
+        <button type="submit" class="btn btn-outline-light">ADD</button>
+    </form>
+
+    </div>
+
+    <div class="col-md-6">
 
     #if($stylists)
 
@@ -9,7 +26,7 @@
 
         <form action="#" method="">
             <button type="submit" class="btn btn-danger" id="delete-stylist">Delete Stylist</button>
-            </form>
+        </form>
             </div>
         #end
     </ol>
@@ -17,3 +34,7 @@
     <p>NO STYLISTS</p>
     #end
     </div>
+    
+   </div>
+   
+</div>

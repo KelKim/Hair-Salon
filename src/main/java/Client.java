@@ -4,9 +4,11 @@ import org.sql2o.*;
 
 public class Client {
     private String clientName;
+    private int id;
+    private int stylistId;
 
 
-    public Client(String clientName){
+    public Client(String clientName, int stylistId){
         this.clientName = clientName;
         this.stylistId = stylistId;
     }

@@ -9,8 +9,7 @@ public class App{
     public static void main(String[] args){
         staticFileLocation("/public");
         String layout = "templates/layout.vtl";
-        enableDebugScreen();
-
+       
  		ProcessBuilder process = new ProcessBuilder();
         Integer port;
         if (process.environment().get("PORT") != null) {
